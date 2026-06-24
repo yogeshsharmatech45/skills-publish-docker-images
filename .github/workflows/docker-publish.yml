@@ -8,8 +8,7 @@ on:
 permissions:
   contents: read
   packages: write
-
-  jobs:
+jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
@@ -18,9 +17,9 @@ permissions:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: {% raw %}${{ github.actor }}{% endraw %}
-          password: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker image
         run: |
-          docker build . --tag ghcr.io/{{ full_repo_name | lower }}/stackoverflown:main
-          docker push ghcr.io/{{ full_repo_name | lower }}/stackoverflown:main
+          docker build . --tag ghcr.io/yogeshsharmatech45/skills-publish-docker-images/stackoverflown:main
+          docker push ghcr.io/yogeshsharmatech45/skills-publish-docker-images/stackoverflown:main
